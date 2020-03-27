@@ -31,14 +31,14 @@ namespace WebTIGA.Controllers
         {
             if (comunicado  ==null)
             {
-                ViewBag.Comunicado = "Bienvenido, para acceder ingresar su usuario y contraseña; de no tenerla comunicarse con soporteauditoria@pacifico.com.pe";
+                ViewBag.Comunicado = "Bienvenido, para acceder ingresar su usuario y contraseña; de no tenerla comunicarse con soporteauditoria@pacifico.com.pe .";
             }
             else
             {
                 ViewBag.Comunicado = comunicado;
             }
-            
 
+       
             return View("Login_");
         }
 
@@ -68,7 +68,7 @@ namespace WebTIGA.Controllers
                 }
                 else
                 {
-                    ViewBag.Message1 = "El usuario y contraseña es incorrecto";
+                    ViewBag.Message1 = "El usuario y la contraseña es incorrecto ";
                     return View("Login_");
                 }
             }
@@ -115,7 +115,7 @@ namespace WebTIGA.Controllers
                     db2.SaveChanges();
                     ////enviar mail
                     SendEmail(datoemail, token,nombre);
-                    session.setSession("Comunicado", "Se envió el correo de restablecimiento de contraseña satisfactoriamente");
+                    session.setSession("Comunicado", "Se envió el correo de restablecimiento de contraseña satisfactoriamente .");
                 }
             }
             else
@@ -123,7 +123,7 @@ namespace WebTIGA.Controllers
                 ViewBag.Message = "El usuario es incorrecto.";
                 return View();
             }
-            return RedirectToAction("Login_", "Login", new { @comunicado = "Se envió el correo de restablecimiento de contraseña satisfactoriamente" });
+            return RedirectToAction("Login_", "Login", new { @comunicado = "Se envió el correo de restablecimiento de contraseña satisfactoriamente ." });
             //return RedirectToAction("Login_", "Login");
         }
 

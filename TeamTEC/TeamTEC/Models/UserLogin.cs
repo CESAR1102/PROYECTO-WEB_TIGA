@@ -12,12 +12,12 @@ namespace WebTIGA.Models
         public int ID { get; set; }
         public int? IDPersona { get; set; }
 
-        [Required(ErrorMessage = "El usuario es requerido")]
+        [Required(ErrorMessage = " El usuario es requerido")]
         [Display(Name = "Usuario")]
         public String UsuarioWT { get; set; }
 
         [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos de 6 caracteres")]
-        [Required(ErrorMessage = "La contraseña es requerida")]
+        [Required(ErrorMessage = " La contraseña es requerida")]
         [Display(Name = "Contraseña")]
         public string Contraseña { get; set; }
         public int? Rol { get; set; }
