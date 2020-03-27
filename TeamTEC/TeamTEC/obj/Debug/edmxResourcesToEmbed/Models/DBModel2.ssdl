@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PROYECTOSIAV2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="IdModulo" />
+    </Key>
+    <Property Name="IdModulo" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Enlace" Type="varchar(max)" />
+    <Property Name="IMG" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ModuloRol">
+    <Key>
+      <PropertyRef Name="IdModulo" />
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdModulo" Type="int" Nullable="false" />
+    <Property Name="IdRol" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="IdCompañia" Type="int" Nullable="false" />
+    <Property Name="Nombres" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Apellidos" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Dni" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="Activo" Type="int" Nullable="false" />
+    <Property Name="Función" Type="varchar" MaxLength="30" />
+    <Property Name="Matrícula" Type="varchar" MaxLength="50" />
+    <Property Name="SubGerencia" Type="varchar" MaxLength="50" />
+    <Property Name="Equipo" Type="varchar" MaxLength="200" />
+    <Property Name="FechaIngreso" Type="date" />
+    <Property Name="NombreSharepoint" Type="varchar" MaxLength="50" />
+    <Property Name="Administrador" Type="tinyint" />
+    <Property Name="NombreTC" Type="varchar" MaxLength="50" />
+    <Property Name="NombreSharepoint2" Type="varchar" MaxLength="50" />
+    <Property Name="NombreSharepoint3" Type="varchar" MaxLength="50" />
+    <Property Name="NombreSharepoint4" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="int" Nullable="false" />
+    <Property Name="Tiporol" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contraseña" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="token_recovery" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="UsuarioModuloRol">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdModulo" Type="int" Nullable="false" />
+    <Property Name="IdRol" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PROYECTOSIAV2.dbo.VIEW_ADMINISTRACION_USUARIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_ADMINISTRACION_USUARIOS">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+      <PropertyRef Name="Persona" />
+      <PropertyRef Name="IdModulo" />
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="Persona" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdModulo" Type="int" Nullable="false" />
+    <Property Name="IdRol" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PROYECTOSIAV2.dbo.VIEW_USUARIOS_FORGOT_PASSWORD' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_USUARIOS_FORGOT_PASSWORD">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="Contraseña" />
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contraseña" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="token_recovery" Type="varchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PROYECTOSIAV2.dbo.VIEW_WT_ADMIN_MODULO_ROL' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_WT_ADMIN_MODULO_ROL">
+    <Key>
+      <PropertyRef Name="Administrador" />
+      <PropertyRef Name="Gestor de Equipo" />
+      <PropertyRef Name="Recurso" />
+    </Key>
+    <Property Name="Modulos" Type="varchar" MaxLength="100" />
+    <Property Name="Administrador" Type="int" Nullable="false" />
+    <Property Name="Gestor de Equipo" Type="int" Nullable="false" />
+    <Property Name="Recurso" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'PROYECTOSIAV2.dbo.VIEW_WT_USUARIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_WT_USUARIOS">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Usuario" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Usuario__IdPerso__2704CA5F">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ModuloRol_IdModulo">
+    <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
+    <End Role="ModuloRol" Type="Self.ModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulo">
+        <PropertyRef Name="IdModulo" />
+      </Principal>
+      <Dependent Role="ModuloRol">
+        <PropertyRef Name="IdModulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ModuloRol_IdRol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="ModuloRol" Type="Self.ModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="ModuloRol">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioModuloRol_IdUsuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="UsuarioModuloRol" Type="Self.UsuarioModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="UsuarioModuloRol">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioModuloRol_ModuloRol">
+    <End Role="ModuloRol" Type="Self.ModuloRol" Multiplicity="1" />
+    <End Role="UsuarioModuloRol" Type="Self.UsuarioModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModuloRol">
+        <PropertyRef Name="IdModulo" />
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="UsuarioModuloRol">
+        <PropertyRef Name="IdModulo" />
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_MODULOS_USUARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_USUARIO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_WT_ADMINISTRADOR_USUARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_USUARIO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_WT_ROLES_MODULO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="PROYECTOSIAV2ModelStoreContainer">
+    <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ModuloRol" EntityType="Self.ModuloRol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuarioModuloRol" EntityType="Self.UsuarioModuloRol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VIEW_ADMINISTRACION_USUARIOS" EntityType="Self.VIEW_ADMINISTRACION_USUARIOS" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_ADMINISTRACION_USUARIOS].[IdUsuario] AS [IdUsuario], 
+    [VIEW_ADMINISTRACION_USUARIOS].[Persona] AS [Persona], 
+    [VIEW_ADMINISTRACION_USUARIOS].[IdModulo] AS [IdModulo], 
+    [VIEW_ADMINISTRACION_USUARIOS].[IdRol] AS [IdRol]
+    FROM [dbo].[VIEW_ADMINISTRACION_USUARIOS] AS [VIEW_ADMINISTRACION_USUARIOS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_USUARIOS_FORGOT_PASSWORD" EntityType="Self.VIEW_USUARIOS_FORGOT_PASSWORD" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_USUARIOS_FORGOT_PASSWORD].[IdUsuario] AS [IdUsuario], 
+    [VIEW_USUARIOS_FORGOT_PASSWORD].[IdPersona] AS [IdPersona], 
+    [VIEW_USUARIOS_FORGOT_PASSWORD].[Usuario] AS [Usuario], 
+    [VIEW_USUARIOS_FORGOT_PASSWORD].[Contraseña] AS [Contraseña], 
+    [VIEW_USUARIOS_FORGOT_PASSWORD].[token_recovery] AS [token_recovery], 
+    [VIEW_USUARIOS_FORGOT_PASSWORD].[Email] AS [Email]
+    FROM [dbo].[VIEW_USUARIOS_FORGOT_PASSWORD] AS [VIEW_USUARIOS_FORGOT_PASSWORD]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_WT_ADMIN_MODULO_ROL" EntityType="Self.VIEW_WT_ADMIN_MODULO_ROL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_WT_ADMIN_MODULO_ROL].[Modulos] AS [Modulos], 
+    [VIEW_WT_ADMIN_MODULO_ROL].[Administrador] AS [Administrador], 
+    [VIEW_WT_ADMIN_MODULO_ROL].[Gestor de Equipo] AS [Gestor de Equipo], 
+    [VIEW_WT_ADMIN_MODULO_ROL].[Recurso] AS [Recurso]
+    FROM [dbo].[VIEW_WT_ADMIN_MODULO_ROL] AS [VIEW_WT_ADMIN_MODULO_ROL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_WT_USUARIOS" EntityType="Self.VIEW_WT_USUARIOS" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_WT_USUARIOS].[Id] AS [Id], 
+    [VIEW_WT_USUARIOS].[Usuario] AS [Usuario]
+    FROM [dbo].[VIEW_WT_USUARIOS] AS [VIEW_WT_USUARIOS]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Usuario__IdPerso__2704CA5F" Association="Self.FK__Usuario__IdPerso__2704CA5F">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ModuloRol_IdModulo" Association="Self.FK_ModuloRol_IdModulo">
+      <End Role="Modulo" EntitySet="Modulo" />
+      <End Role="ModuloRol" EntitySet="ModuloRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ModuloRol_IdRol" Association="Self.FK_ModuloRol_IdRol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="ModuloRol" EntitySet="ModuloRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioModuloRol_IdUsuario" Association="Self.FK_UsuarioModuloRol_IdUsuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="UsuarioModuloRol" EntitySet="UsuarioModuloRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioModuloRol_ModuloRol" Association="Self.FK_UsuarioModuloRol_ModuloRol">
+      <End Role="ModuloRol" EntitySet="ModuloRol" />
+      <End Role="UsuarioModuloRol" EntitySet="UsuarioModuloRol" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

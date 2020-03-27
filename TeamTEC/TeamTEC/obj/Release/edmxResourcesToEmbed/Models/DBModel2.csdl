@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PROYECTOSIAV2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ModuloRol">
+    <Key>
+      <PropertyRef Name="IdModulo" />
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdModulo" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_ModuloRol_IdRol" FromRole="ModuloRol" ToRole="Rol" />
+    <NavigationProperty Name="UsuarioModuloRol" Relationship="Self.FK_UsuarioModuloRol_ModuloRol" FromRole="ModuloRol" ToRole="UsuarioModuloRol" />
+    <NavigationProperty Name="Modulo" Relationship="PROYECTOSIAV2Model.FK_ModuloRol_IdModulo" FromRole="ModuloRol" ToRole="Modulo" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="IdCompañia" Type="Int32" Nullable="false" />
+    <Property Name="Nombres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Dni" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Activo" Type="Int32" Nullable="false" />
+    <Property Name="Función" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Matrícula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubGerencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Equipo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="NombreSharepoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Administrador" Type="Byte" />
+    <Property Name="NombreTC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreSharepoint2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreSharepoint3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreSharepoint4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__IdPerso__2704CA5F" FromRole="Persona" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Tiporol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ModuloRol" Relationship="Self.FK_ModuloRol_IdRol" FromRole="Rol" ToRole="ModuloRol" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK__Usuario__IdPerso__2704CA5F" FromRole="Usuario" ToRole="Persona" />
+    <NavigationProperty Name="UsuarioModuloRol" Relationship="Self.FK_UsuarioModuloRol_IdUsuario" FromRole="Usuario" ToRole="UsuarioModuloRol" />
+    <Property Name="token_recovery" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UsuarioModuloRol">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+      <PropertyRef Name="IdModulo" />
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdModulo" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ModuloRol" Relationship="Self.FK_UsuarioModuloRol_ModuloRol" FromRole="UsuarioModuloRol" ToRole="ModuloRol" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_UsuarioModuloRol_IdUsuario" FromRole="UsuarioModuloRol" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK_ModuloRol_IdRol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="ModuloRol" Type="Self.ModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="ModuloRol">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioModuloRol_ModuloRol">
+    <End Role="ModuloRol" Type="Self.ModuloRol" Multiplicity="1" />
+    <End Role="UsuarioModuloRol" Type="Self.UsuarioModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModuloRol">
+        <PropertyRef Name="IdModulo" />
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="UsuarioModuloRol">
+        <PropertyRef Name="IdModulo" />
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__IdPerso__2704CA5F">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioModuloRol_IdUsuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="UsuarioModuloRol" Type="Self.UsuarioModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="UsuarioModuloRol">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PROYECTOSIAV2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ModuloRol" EntityType="Self.ModuloRol" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="UsuarioModuloRol" EntityType="Self.UsuarioModuloRol" />
+    <AssociationSet Name="FK_ModuloRol_IdRol" Association="Self.FK_ModuloRol_IdRol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="ModuloRol" EntitySet="ModuloRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioModuloRol_ModuloRol" Association="Self.FK_UsuarioModuloRol_ModuloRol">
+      <End Role="ModuloRol" EntitySet="ModuloRol" />
+      <End Role="UsuarioModuloRol" EntitySet="UsuarioModuloRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__IdPerso__2704CA5F" Association="Self.FK__Usuario__IdPerso__2704CA5F">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioModuloRol_IdUsuario" Association="Self.FK_UsuarioModuloRol_IdUsuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="UsuarioModuloRol" EntitySet="UsuarioModuloRol" />
+    </AssociationSet>
+    <EntitySet Name="VIEW_ADMINISTRACION_USUARIOS" EntityType="PROYECTOSIAV2Model.VIEW_ADMINISTRACION_USUARIOS" />
+    <EntitySet Name="VIEW_USUARIOS_FORGOT_PASSWORD" EntityType="PROYECTOSIAV2Model.VIEW_USUARIOS_FORGOT_PASSWORD" />
+    <FunctionImport Name="SP_MODULOS_USUARIOS" ReturnType="Collection(PROYECTOSIAV2Model.SP_MODULOS_USUARIOS_Result)">
+      <Parameter Name="id_USUARIO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Modulo" EntityType="PROYECTOSIAV2Model.Modulo" />
+    <AssociationSet Name="FK_ModuloRol_IdModulo" Association="PROYECTOSIAV2Model.FK_ModuloRol_IdModulo">
+      <End Role="Modulo" EntitySet="Modulo" />
+      <End Role="ModuloRol" EntitySet="ModuloRol" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="VIEW_ADMINISTRACION_USUARIOS">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+      <PropertyRef Name="Persona" />
+      <PropertyRef Name="IdModulo" />
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="Persona" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdModulo" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VIEW_USUARIOS_FORGOT_PASSWORD">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="Contraseña" />
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contraseña" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="token_recovery" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="SP_MODULOS_USUARIOS_Result">
+    <Property Type="Int32" Name="IdModulo" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Enlace" Nullable="true" />
+    <Property Type="String" Name="IMG" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="activo" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="IdModulo" />
+    </Key>
+    <Property Name="IdModulo" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Enlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ModuloRol" Relationship="PROYECTOSIAV2Model.FK_ModuloRol_IdModulo" FromRole="Modulo" ToRole="ModuloRol" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_ModuloRol_IdModulo">
+    <End Type="PROYECTOSIAV2Model.Modulo" Role="Modulo" Multiplicity="1" />
+    <End Type="PROYECTOSIAV2Model.ModuloRol" Role="ModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulo">
+        <PropertyRef Name="IdModulo" />
+      </Principal>
+      <Dependent Role="ModuloRol">
+        <PropertyRef Name="IdModulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

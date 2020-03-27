@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PROYECTOSIAV2ModelStoreContainer" CdmEntityContainer="PROYECTOSIAV2Entities">
+    <EntitySetMapping Name="ModuloRol">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.ModuloRol">
+        <MappingFragment StoreEntitySet="ModuloRol">
+          <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Tiporol" ColumnName="Tiporol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="token_recovery" ColumnName="token_recovery" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_ADMINISTRACION_USUARIOS">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.VIEW_ADMINISTRACION_USUARIOS">
+        <MappingFragment StoreEntitySet="VIEW_ADMINISTRACION_USUARIOS">
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+          <ScalarProperty Name="Persona" ColumnName="Persona" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_USUARIOS_FORGOT_PASSWORD">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.VIEW_USUARIOS_FORGOT_PASSWORD">
+        <MappingFragment StoreEntitySet="VIEW_USUARIOS_FORGOT_PASSWORD">
+          <ScalarProperty Name="token_recovery" ColumnName="token_recovery" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_MODULOS_USUARIOS" FunctionName="PROYECTOSIAV2Model.Store.SP_MODULOS_USUARIOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PROYECTOSIAV2Model.SP_MODULOS_USUARIOS_Result">
+          <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+          <ScalarProperty Name="IMG" ColumnName="IMG" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Modulo">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.Modulo">
+        <MappingFragment StoreEntitySet="Modulo">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IMG" ColumnName="IMG" />
+          <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_WT_ADMINISTRADOR_USUARIOS" FunctionName="PROYECTOSIAV2Model.Store.SP_WT_ADMINISTRADOR_USUARIOS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PROYECTOSIAV2Model.SP_WT_ADMINISTRADOR_USUARIOS_Result">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Aplicativo" ColumnName="Aplicativo" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="NombreSharepoint4" ColumnName="NombreSharepoint4" />
+          <ScalarProperty Name="NombreSharepoint3" ColumnName="NombreSharepoint3" />
+          <ScalarProperty Name="NombreSharepoint2" ColumnName="NombreSharepoint2" />
+          <ScalarProperty Name="NombreTC" ColumnName="NombreTC" />
+          <ScalarProperty Name="Administrador" ColumnName="Administrador" />
+          <ScalarProperty Name="NombreSharepoint" ColumnName="NombreSharepoint" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="Equipo" ColumnName="Equipo" />
+          <ScalarProperty Name="SubGerencia" ColumnName="SubGerencia" />
+          <ScalarProperty Name="Matrícula" ColumnName="Matrícula" />
+          <ScalarProperty Name="Función" ColumnName="Función" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Dni" ColumnName="Dni" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="IdCompañia" ColumnName="IdCompañia" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_WT_USUARIOS">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.VIEW_WT_USUARIOS">
+        <MappingFragment StoreEntitySet="VIEW_WT_USUARIOS">
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuarioModuloRol">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.UsuarioModuloRol">
+        <MappingFragment StoreEntitySet="UsuarioModuloRol">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_WT_ADMIN_MODULO_ROL">
+      <EntityTypeMapping TypeName="PROYECTOSIAV2Model.VIEW_WT_ADMIN_MODULO_ROL">
+        <MappingFragment StoreEntitySet="VIEW_WT_ADMIN_MODULO_ROL">
+          <ScalarProperty Name="Recurso" ColumnName="Recurso" />
+          <ScalarProperty Name="Gestor_de_Equipo" ColumnName="Gestor de Equipo" />
+          <ScalarProperty Name="Administrador" ColumnName="Administrador" />
+          <ScalarProperty Name="Modulos" ColumnName="Modulos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_WT_ROLES_MODULO" FunctionName="PROYECTOSIAV2Model.Store.SP_WT_ROLES_MODULO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PROYECTOSIAV2Model.SP_WT_ROLES_MODULO_Result">
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Tiporol" ColumnName="Tiporol" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

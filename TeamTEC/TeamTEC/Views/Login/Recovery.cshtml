@@ -1,0 +1,59 @@
+﻿@model WebTIGA.Models.RecoveryPasswordViewModel
+@{
+    Layout = "~/Views/Shared/_Layout_Forgot_Password.cshtml";
+    //Layout = "~/Views/Shared/_Layout_Login.cshtml";    
+}
+
+
+<div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+        <br /> <br /> <br /><br /><br /><br /><br />
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block " style="background-image: url('../img/logos/L2.png') "></div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-2">Restablecer contraseña</h1>
+                            </div>
+                            <form action="@Url.Content("~/Login/Recovery")" method="post">
+                                @Html.HiddenFor(d => d.token)
+
+                                <label>Escribe tu nueva contraseña</label>
+                                @Html.PasswordFor(d => d.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(d => d.Password, null, new { style = "color:red;" })
+
+                                <label>Vuelve a escribir contraseña</label>
+                                @Html.PasswordFor(d => d.Password2, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(d => d.Password2, null, new { style = "color:red;" })
+                                <br />
+                                <div class="text-right">
+                                    <input type="submit" value="Recuperar" class="btn btn-info btn-user btn-block" />
+                                </div>
+
+                            </form>
+                            <hr>
+                            <div class="text-center">
+
+                                @Html.ActionLink("¿Recordate tu contraseña? ¡Iniciar sesión!", "Login_", new { @style = "color:a" })
+                            </div>
+                            <style>
+                                a {
+                                    color: #1f99a4;
+                                    text-decoration: none;
+                                }
+
+                                    a:hover {
+                                        color: #63c6c6;
+                                    }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

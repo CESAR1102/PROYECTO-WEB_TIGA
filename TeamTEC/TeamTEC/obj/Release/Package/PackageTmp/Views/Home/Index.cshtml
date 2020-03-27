@@ -1,0 +1,99 @@
+﻿
+@using WebTIGA;
+@model WebTIGA.Models.ContenedorModelos
+@{
+    Layout = "~/Views/Shared/_Layout_Home.cshtml";
+    string user = Convert.ToString(Session["IdUser"]);
+    string habilitar = "";
+    string cursor = "";
+    string img = "";
+    string url = "";
+    string descripcion = "";
+    
+
+}
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container">
+
+        <div class="intro-text">
+            <div class="intro-lead-in">Bienvenido </div>
+
+            <div class="intro-heading text-uppercase">@ViewBag.nombre </div>
+
+            <a class="btn btn-primary  btn-xl text-uppercase js-scroll-trigger" href="#portfolio">Empezar</a>
+
+        </div>
+    </div>
+</header>
+
+<!-- Portfolio Grid -->
+
+<section class="bg-light page-section" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">MODULOS DE  AUDITORIA</h2>
+                <h3 class="section-subheading text-muted">A continuación se muestran los modulos utilizados en auditoría interna Pacífico.</h3>
+            </div>
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model.SP_MODULOS_USUARIOS_Result)
+            {
+
+                img = item.IMG;
+                if (item.activo != 1)
+                {
+                    habilitar = "disable";
+                    cursor = "cursor: not-allowed;color:black;";
+                    url = "#";
+
+                }
+                else
+                {
+                    habilitar = "";
+                    cursor = "";
+                    url = item.Enlace;
+
+                }
+
+                descripcion = item.Descripcion;
+                <div class="col-md-3 col-sm-6 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" title="@descripcion" disabled="@habilitar" style="@cursor" onclick="window.open(this.href); return false;" onkeypress="window.open(this.href); return false;" href="@url">
+
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa-3x"></i>
+
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="~/img/portfolio/@img" alt="" >
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>@item.Nombre</h4>
+                        <p class="text-muted">Web</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+
+@*<div class="col-md-4 col-sm-6 portfolio-item">
+        <a class="portfolio-link" href="@Url.Action("Dashboard", "WebTec")">
+            <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                    <i class="fas fa-plus fa-3x"></i>
+                </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
+        </a>
+        <div class="portfolio-caption">
+            <h4>TeamTEC</h4>
+            <p class="text-muted">Web</p>
+        </div>
+    </div>*@

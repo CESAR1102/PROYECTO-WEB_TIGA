@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PROYECTOSIAV2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ModuloRol">
+    <Key>
+      <PropertyRef Name="IdModulo" />
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdModulo" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_ModuloRol_IdRol" FromRole="ModuloRol" ToRole="Rol" />
+    <NavigationProperty Name="Modulo" Relationship="PROYECTOSIAV2Model.FK_ModuloRol_IdModulo" FromRole="ModuloRol" ToRole="Modulo" />
+    <NavigationProperty Name="UsuarioModuloRol" Relationship="PROYECTOSIAV2Model.FK_UsuarioModuloRol_ModuloRol" FromRole="ModuloRol" ToRole="UsuarioModuloRol" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Tiporol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ModuloRol" Relationship="Self.FK_ModuloRol_IdRol" FromRole="Rol" ToRole="ModuloRol" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="token_recovery" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Persona" Relationship="PROYECTOSIAV2Model.FK__Usuario__IdPerso__2704CA5F" FromRole="Usuario" ToRole="Persona" />
+    <NavigationProperty Name="UsuarioModuloRol" Relationship="PROYECTOSIAV2Model.FK_UsuarioModuloRol_IdUsuario" FromRole="Usuario" ToRole="UsuarioModuloRol" />
+  </EntityType>
+  <Association Name="FK_ModuloRol_IdRol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="ModuloRol" Type="Self.ModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="ModuloRol">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PROYECTOSIAV2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ModuloRol" EntityType="Self.ModuloRol" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK_ModuloRol_IdRol" Association="Self.FK_ModuloRol_IdRol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="ModuloRol" EntitySet="ModuloRol" />
+    </AssociationSet>
+    <EntitySet Name="VIEW_ADMINISTRACION_USUARIOS" EntityType="PROYECTOSIAV2Model.VIEW_ADMINISTRACION_USUARIOS" />
+    <EntitySet Name="VIEW_USUARIOS_FORGOT_PASSWORD" EntityType="PROYECTOSIAV2Model.VIEW_USUARIOS_FORGOT_PASSWORD" />
+    <FunctionImport Name="SP_MODULOS_USUARIOS" ReturnType="Collection(PROYECTOSIAV2Model.SP_MODULOS_USUARIOS_Result)">
+      <Parameter Name="id_USUARIO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Modulo" EntityType="PROYECTOSIAV2Model.Modulo" />
+    <AssociationSet Name="FK_ModuloRol_IdModulo" Association="PROYECTOSIAV2Model.FK_ModuloRol_IdModulo">
+      <End Role="Modulo" EntitySet="Modulo" />
+      <End Role="ModuloRol" EntitySet="ModuloRol" />
+    </AssociationSet>
+    <FunctionImport Name="SP_WT_ADMINISTRADOR_USUARIOS" ReturnType="Collection(PROYECTOSIAV2Model.SP_WT_ADMINISTRADOR_USUARIOS_Result)">
+      <Parameter Name="ID_USUARIO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Persona" EntityType="PROYECTOSIAV2Model.Persona" />
+    <AssociationSet Name="FK__Usuario__IdPerso__2704CA5F" Association="PROYECTOSIAV2Model.FK__Usuario__IdPerso__2704CA5F">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <EntitySet Name="VIEW_WT_USUARIOS" EntityType="PROYECTOSIAV2Model.VIEW_WT_USUARIOS" />
+    <EntitySet Name="UsuarioModuloRol" EntityType="PROYECTOSIAV2Model.UsuarioModuloRol" />
+    <AssociationSet Name="FK_UsuarioModuloRol_ModuloRol" Association="PROYECTOSIAV2Model.FK_UsuarioModuloRol_ModuloRol">
+      <End Role="ModuloRol" EntitySet="ModuloRol" />
+      <End Role="UsuarioModuloRol" EntitySet="UsuarioModuloRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuarioModuloRol_IdUsuario" Association="PROYECTOSIAV2Model.FK_UsuarioModuloRol_IdUsuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="UsuarioModuloRol" EntitySet="UsuarioModuloRol" />
+    </AssociationSet>
+    <EntitySet Name="VIEW_WT_ADMIN_MODULO_ROL" EntityType="PROYECTOSIAV2Model.VIEW_WT_ADMIN_MODULO_ROL" />
+    <FunctionImport Name="SP_WT_ROLES_MODULO" ReturnType="Collection(PROYECTOSIAV2Model.SP_WT_ROLES_MODULO_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="VIEW_ADMINISTRACION_USUARIOS">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+      <PropertyRef Name="Persona" />
+      <PropertyRef Name="IdModulo" />
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="Persona" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdModulo" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VIEW_USUARIOS_FORGOT_PASSWORD">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="Contraseña" />
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contraseña" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="token_recovery" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="SP_MODULOS_USUARIOS_Result">
+    <Property Type="Int32" Name="IdModulo" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Enlace" Nullable="true" />
+    <Property Type="String" Name="IMG" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="activo" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="IdModulo" />
+    </Key>
+    <Property Name="IdModulo" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Enlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IMG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ModuloRol" Relationship="PROYECTOSIAV2Model.FK_ModuloRol_IdModulo" FromRole="Modulo" ToRole="ModuloRol" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_ModuloRol_IdModulo">
+    <End Type="PROYECTOSIAV2Model.Modulo" Role="Modulo" Multiplicity="1" />
+    <End Type="PROYECTOSIAV2Model.ModuloRol" Role="ModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modulo">
+        <PropertyRef Name="IdModulo" />
+      </Principal>
+      <Dependent Role="ModuloRol">
+        <PropertyRef Name="IdModulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SP_WT_ADMINISTRADOR_USUARIOS_Result">
+    <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+    <Property Type="String" Name="Usuario" Nullable="false" />
+    <Property Type="String" Name="Aplicativo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Rol" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="IdCompañia" Type="Int32" Nullable="false" />
+    <Property Name="Nombres" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Dni" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="Activo" Type="Int32" Nullable="false" />
+    <Property Name="Función" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Matrícula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubGerencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Equipo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="NombreSharepoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Administrador" Type="Byte" />
+    <Property Name="NombreTC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreSharepoint2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreSharepoint3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreSharepoint4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuario" Relationship="PROYECTOSIAV2Model.FK__Usuario__IdPerso__2704CA5F" FromRole="Persona" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK__Usuario__IdPerso__2704CA5F">
+    <End Type="PROYECTOSIAV2Model.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="PROYECTOSIAV2Model.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VIEW_WT_USUARIOS">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Usuario" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UsuarioModuloRol">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdModulo" Type="Int32" Nullable="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ModuloRol" Relationship="PROYECTOSIAV2Model.FK_UsuarioModuloRol_ModuloRol" FromRole="UsuarioModuloRol" ToRole="ModuloRol" />
+    <NavigationProperty Name="Usuario" Relationship="PROYECTOSIAV2Model.FK_UsuarioModuloRol_IdUsuario" FromRole="UsuarioModuloRol" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK_UsuarioModuloRol_ModuloRol">
+    <End Type="PROYECTOSIAV2Model.ModuloRol" Role="ModuloRol" Multiplicity="1" />
+    <End Type="PROYECTOSIAV2Model.UsuarioModuloRol" Role="UsuarioModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModuloRol">
+        <PropertyRef Name="IdModulo" />
+        <PropertyRef Name="IdRol" />
+      </Principal>
+      <Dependent Role="UsuarioModuloRol">
+        <PropertyRef Name="IdModulo" />
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuarioModuloRol_IdUsuario">
+    <End Type="PROYECTOSIAV2Model.Usuario" Role="Usuario" Multiplicity="1" />
+    <End Type="PROYECTOSIAV2Model.UsuarioModuloRol" Role="UsuarioModuloRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="UsuarioModuloRol">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VIEW_WT_ADMIN_MODULO_ROL">
+    <Key>
+      <PropertyRef Name="Administrador" />
+      <PropertyRef Name="Gestor_de_Equipo" />
+      <PropertyRef Name="Recurso" />
+    </Key>
+    <Property Name="Modulos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Administrador" Type="Int32" Nullable="false" />
+    <Property Name="Gestor_de_Equipo" Type="Int32" Nullable="false" />
+    <Property Name="Recurso" Type="Int32" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="SP_WT_ROLES_MODULO_Result">
+    <Property Type="Int32" Name="IdRol" Nullable="false" />
+    <Property Type="String" Name="Tiporol" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

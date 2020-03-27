@@ -1,0 +1,108 @@
+﻿
+@model WebTIGA.Models.UserLogin
+
+@{
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";    
+}
+
+@* bg-login-image *@
+
+<div style="color:red;">
+    @ViewBag.Error
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+        <br /> <br /> <br /><br /><br /><br /><br />
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="bg-gradient-info col-lg-6 d-none d-lg-block align-content-xl-between " style="background-image: url('../img/logos/Ltiga.PNG') "></div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">¡Bienvenido!</h1>
+                            </div>
+                            <div style="color:red;">
+                                @ViewBag.Message1
+                            </div>
+                            <br />
+                            <form class="signup-form" method="post" action="#">
+                                @using (Html.BeginForm("Login_", "Login", FormMethod.Post, new { @class = "form-group" }))
+                                {
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(d1 => d1.UsuarioWT, new
+                                        {
+                                            @class = "form-control form-control-user",@*@id="exampleInputEmail",@type="email",*@@placeholder = "Usuario"
+})
+                                        @Html.ValidationMessageFor(d1 => d1.UsuarioWT, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.PasswordFor(d1 => d1.Contraseña, new
+                                        {
+                                            @class = "form-control form-control-user",@*@id="exampleInputPassword",@type="password",*@@placeholder = "Contraseña"
+})
+                                        @Html.ValidationMessageFor(d1 => d1.Contraseña, "", new { @class = "text-danger" })
+                                    </div>
+                                    <input type="submit" value="Login" class="btn btn-info btn-user btn-block" />
+                                }
+                            </form>
+                            <hr>
+                            <div class="text-center ">
+                                @Html.ActionLink("¿Olvidaste tu contraseña?", "Forgot_Password", new { @style = "color:a" })
+                            </div>
+
+                            <style>
+                                a {
+                                    color: #1f99a4;
+                                    text-decoration: none;
+                                }
+
+
+                                    a:hover {
+                                        color: #63c6c6;
+                                    }
+
+                                
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Web TIGA | Notificación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">                
+                @ViewBag.Comunicado
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function deshabilitaRetroceso() {
+        $('#exampleModal').modal('toggle')
+        window.location.hash = "no-back-button";
+        window.location.hash = "Again-No-back-button"
+        window.onhashchange = function () { window.location.hash = "no-back-button"; }
+    };
+</script>
+
+
+
+
+
