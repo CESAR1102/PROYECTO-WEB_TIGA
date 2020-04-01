@@ -29,8 +29,7 @@ namespace WebTIGA.Models
         public bool logeo()
 
         {
-            //var ContraseñaEncrypt = Encrypt.Base64_Encode(Contraseña);
-
+         
             var query = from u in user.Usuario
                         where u.Usuario1 == UsuarioWT && u.Contraseña == Contraseña
                         select u;
@@ -39,8 +38,6 @@ namespace WebTIGA.Models
             
             if (query.Count() > 0)
             {
-
-                //var query2 = from u in user.DACW_Usuario_Login where u.Usuario == Usuario select u;
                 var datos = query.ToList();
                 foreach (var Data in datos)
                 {

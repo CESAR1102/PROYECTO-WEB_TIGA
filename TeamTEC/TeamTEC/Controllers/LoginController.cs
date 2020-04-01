@@ -184,8 +184,9 @@ namespace WebTIGA.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                string EmailOrigen = "soporteauditoria@pacifico.com.pe";
+
+                //string EmailOrigen = "soporteauditoria@pacifico.com.pe";
+                string EmailOrigen = "cgutierrez@pacifico.com.pe";
                 //string Contraseña = "Operador14";
                 string url = urlDomain + "/Login/Recovery/?token=" + token;
 
@@ -201,7 +202,7 @@ namespace WebTIGA.Controllers
                 {
                     smtp.Host = "172.30.11.174";
                     //NetworkCredential NetworkCred = new NetworkCredential("soporteauditoria@pacifico.com.pe", "a");
-                     NetworkCredential NetworkCred = new NetworkCredential("soporteauditoria@pacifico.com.pe", "a");
+                     NetworkCredential NetworkCred = new NetworkCredential("cgutierrez@pacifico.com.pe", "a");
                     smtp.UseDefaultCredentials = true;
                     smtp.Credentials = NetworkCred;
                     smtp.Port = 25;
