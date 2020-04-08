@@ -15,10 +15,10 @@ namespace WebTIGA.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PROYECTOSIAV2Entities : DbContext
+    public partial class PROYECTOSIAV2Entities1 : DbContext
     {
-        public PROYECTOSIAV2Entities()
-            : base("name=PROYECTOSIAV2Entities")
+        public PROYECTOSIAV2Entities1()
+            : base("name=PROYECTOSIAV2Entities1")
         {
         }
     
@@ -27,16 +27,16 @@ namespace WebTIGA.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Modulo> Modulo { get; set; }
         public virtual DbSet<ModuloRol> ModuloRol { get; set; }
+        public virtual DbSet<Persona> Persona { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<UsuarioModuloRol> UsuarioModuloRol { get; set; }
         public virtual DbSet<VIEW_ADMINISTRACION_USUARIOS> VIEW_ADMINISTRACION_USUARIOS { get; set; }
         public virtual DbSet<VIEW_USUARIOS_FORGOT_PASSWORD> VIEW_USUARIOS_FORGOT_PASSWORD { get; set; }
-        public virtual DbSet<Modulo> Modulo { get; set; }
-        public virtual DbSet<Persona> Persona { get; set; }
+        public virtual DbSet<VIEW_USUARIOS_LOGIN> VIEW_USUARIOS_LOGIN { get; set; }
         public virtual DbSet<VIEW_WT_USUARIOS> VIEW_WT_USUARIOS { get; set; }
-        public virtual DbSet<UsuarioModuloRol> UsuarioModuloRol { get; set; }
-        public virtual DbSet<VIEW_WT_ADMIN_MODULO_ROL> VIEW_WT_ADMIN_MODULO_ROL { get; set; }
     
         public virtual ObjectResult<SP_MODULOS_USUARIOS_Result> SP_MODULOS_USUARIOS(Nullable<int> id_USUARIO)
         {

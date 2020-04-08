@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PROYECTOSIAV2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="PROYECTOSIAV2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Modulo">
     <Key>
       <PropertyRef Name="IdModulo" />
@@ -101,17 +101,20 @@ advertencia 6002: La tabla o vista 'PROYECTOSIAV2.dbo.VIEW_USUARIOS_FORGOT_PASSW
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'PROYECTOSIAV2.dbo.VIEW_WT_ADMIN_MODULO_ROL' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-  <EntityType Name="VIEW_WT_ADMIN_MODULO_ROL">
+advertencia 6002: La tabla o vista 'PROYECTOSIAV2.dbo.VIEW_USUARIOS_LOGIN' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="VIEW_USUARIOS_LOGIN">
     <Key>
-      <PropertyRef Name="Administrador" />
-      <PropertyRef Name="Gestor de Equipo" />
-      <PropertyRef Name="Recurso" />
+      <PropertyRef Name="IdUsuario" />
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="Usuario" />
+      <PropertyRef Name="Contraseña" />
+      <PropertyRef Name="Email" />
     </Key>
-    <Property Name="Modulos" Type="varchar" MaxLength="100" />
-    <Property Name="Administrador" Type="int" Nullable="false" />
-    <Property Name="Gestor de Equipo" Type="int" Nullable="false" />
-    <Property Name="Recurso" Type="int" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contraseña" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'PROYECTOSIAV2.dbo.VIEW_WT_USUARIOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -219,13 +222,14 @@ advertencia 6002: La tabla o vista 'PROYECTOSIAV2.dbo.VIEW_WT_USUARIOS' no tiene
     [VIEW_USUARIOS_FORGOT_PASSWORD].[Email] AS [Email]
     FROM [dbo].[VIEW_USUARIOS_FORGOT_PASSWORD] AS [VIEW_USUARIOS_FORGOT_PASSWORD]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="VIEW_WT_ADMIN_MODULO_ROL" EntityType="Self.VIEW_WT_ADMIN_MODULO_ROL" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="VIEW_USUARIOS_LOGIN" EntityType="Self.VIEW_USUARIOS_LOGIN" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [VIEW_WT_ADMIN_MODULO_ROL].[Modulos] AS [Modulos], 
-    [VIEW_WT_ADMIN_MODULO_ROL].[Administrador] AS [Administrador], 
-    [VIEW_WT_ADMIN_MODULO_ROL].[Gestor de Equipo] AS [Gestor de Equipo], 
-    [VIEW_WT_ADMIN_MODULO_ROL].[Recurso] AS [Recurso]
-    FROM [dbo].[VIEW_WT_ADMIN_MODULO_ROL] AS [VIEW_WT_ADMIN_MODULO_ROL]</DefiningQuery>
+    [VIEW_USUARIOS_LOGIN].[IdUsuario] AS [IdUsuario], 
+    [VIEW_USUARIOS_LOGIN].[IdPersona] AS [IdPersona], 
+    [VIEW_USUARIOS_LOGIN].[Usuario] AS [Usuario], 
+    [VIEW_USUARIOS_LOGIN].[Contraseña] AS [Contraseña], 
+    [VIEW_USUARIOS_LOGIN].[Email] AS [Email]
+    FROM [dbo].[VIEW_USUARIOS_LOGIN] AS [VIEW_USUARIOS_LOGIN]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="VIEW_WT_USUARIOS" EntityType="Self.VIEW_WT_USUARIOS" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

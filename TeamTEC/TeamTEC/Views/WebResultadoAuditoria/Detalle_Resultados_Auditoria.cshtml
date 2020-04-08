@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Detalle_Resultados_Auditoria";
+}
+
+<h2>Detalle_Resultados_Auditoria</h2>
+
+<html>
+<head>
+
+
+
+</head>
+<body>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-header"><strong>RESULTADO DE AUDITORIA</strong></div>
+                <div class="card-body">
+                    @*<div class="row">
+
+                        <div class="col-lg-8">
+                            @Html.TextBox("Gerencia", null, new { style = "text-transform:uppercase", @class = "form-control", placeholder = "Gerencia" })
+
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="submit" id="Busqueda" value="Buscar" class="btn btn-info" style="background-color :lightseagreen" />
+
+                        </div>
+
+
+                    </div>*@
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <!-- Area Chart -->
+        <div class="col-lg-12">
+            <div class="card shadow mb-4 h-50">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-dark">Resultados de Auditoria</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Dropdown Header:</div>
+                            <a class="dropdown-item" href="#">Detalle</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="chart-area col-6">
+                            <div id="piechart" style="width: 500px; height: 350px;"></div>
+                        </div>
+                        <div class="chart-area col-6">
+                            <div id="donutchart" style="width: 500px; height: 350px;"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="card shadow mb-4 ">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-dark">Controles Evaluados</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Dropdown Header:</div>
+                            <a class="dropdown-item" href="#">Detalle</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="chart-area col-6">
+                            <div id="piechart_3d" style="width: 500px; height: 350px;"></div>
+                        </div>
+                        <div class="chart-area col-6">
+                            <div id="piechart_3d2" style="width: 500px; height: 350px;"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+
+    </div>
+
+    <br />
+
+
+
+
+</body>
+</html>

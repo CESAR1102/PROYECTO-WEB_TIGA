@@ -12,11 +12,12 @@ namespace WebTIGA.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class VIEW_WT_ADMIN_MODULO_ROL
+    public partial class VIEW_USUARIOS_LOGIN
     {
-        public string Modulos { get; set; }
-        public int Administrador { get; set; }
-        public int Gestor_de_Equipo { get; set; }
-        public int Recurso { get; set; }
+        public int IdUsuario { get; set; }
+        public int IdPersona { get; set; }
+        public string Usuario { get; set; }
+        public string Contraseña { get; set; }
+        public string Email { get; set; }
     }
 }

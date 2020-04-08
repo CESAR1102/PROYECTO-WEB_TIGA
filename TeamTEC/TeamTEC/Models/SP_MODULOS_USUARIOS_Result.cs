@@ -17,7 +17,7 @@ namespace WebTIGA.Models
         public string Nombre { get; set; }
         public string Enlace { get; set; }
         public string IMG { get; set; }
-        public int activo { get; set; }
         public string Descripcion { get; set; }
+        public int activo { get; set; }
     }
 }

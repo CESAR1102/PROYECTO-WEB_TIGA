@@ -18,7 +18,7 @@ namespace WebTIGA.Models
         public int IdPersona { get; set; }
         public string Usuario { get; set; }
         public string Contraseña { get; set; }
-        public string Email { get; set; }
         public string token_recovery { get; set; }
+        public string Email { get; set; }
     }
 }

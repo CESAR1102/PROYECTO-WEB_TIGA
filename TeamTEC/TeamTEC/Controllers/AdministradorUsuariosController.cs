@@ -16,7 +16,7 @@ namespace WebTIGA.Controllers
     public class AdministradorUsuariosController : Controller
     {
         SesionData session = new SesionData();
-        PROYECTOSIAV2Entities db = new PROYECTOSIAV2Entities();
+        PROYECTOSIAV2Entities1 db = new PROYECTOSIAV2Entities1();
         ContenedorModelos modelDB = new ContenedorModelos();
         RecoveryViewModel model = new RecoveryViewModel();
     
@@ -262,7 +262,7 @@ namespace WebTIGA.Controllers
             //    var ModuloRol = db.ModuloRol.Include(u => u.Modulo).Include(u => u.Rol);
 
 
-            mymodel.VIEW_WT_ADMIN_MODULO_ROL = db.VIEW_WT_ADMIN_MODULO_ROL;
+            //mymodel.VIEW_WT_ADMIN_MODULO_ROL = db.VIEW_WT_ADMIN_MODULO_ROL;
             
             return View(mymodel);
         }

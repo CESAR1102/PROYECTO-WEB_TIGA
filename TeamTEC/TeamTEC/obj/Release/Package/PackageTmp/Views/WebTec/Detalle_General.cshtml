@@ -1,5 +1,5 @@
-﻿@using WebTIGA;
-@model WebTIGA.Models.ContenedorModelos
+﻿@model WebTIGA.Models.ContenedorModelos
+@using WebTIGA;
 @{
     ViewBag.Title = "Detalle General";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/media/css/site-examples.css?_=19472395a2969da78c8a4c707e72123a">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
-  
+
 
     <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script>
     <script type="text/javascript" src="/media/js/site.js?_=5e8f232afab336abc1a1b65046a73460"></script>
@@ -68,7 +68,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <input type="submit" id="Busqueda" value="Buscar" class="btn btn-info"  style="background-color :lightseagreen" />
+                                    <input type="submit" id="Busqueda" value="Buscar" class="btn btn-info" style="background-color :lightseagreen" />
 
                                 </div>
                             </div>
@@ -91,10 +91,10 @@
                                 <th>Hojas Aprobadas</th>
                                 <th>Hojas Pendientes</th>
                                 <th>Hojas Rechazadas</th>
-                         
+
                             </tr>
                         </thead>
-                        
+
                         <tbody>
                             @foreach (var file in Model.SP_TBL_DETALLE_GENERAL_TEC)
                             {

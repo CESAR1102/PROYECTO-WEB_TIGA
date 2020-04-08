@@ -11,7 +11,7 @@ namespace WebTIGA.Controllers
     {
         MultiserviciosEntities db = new MultiserviciosEntities();
         ContenedorModelos modelDB = new ContenedorModelos();
-        PROYECTOSIAV2Entities db2 = new PROYECTOSIAV2Entities();
+        PROYECTOSIAV2Entities1 db2 = new PROYECTOSIAV2Entities1();
         RecoveryViewModel model = new RecoveryViewModel();
         public ActionResult Index()
         {

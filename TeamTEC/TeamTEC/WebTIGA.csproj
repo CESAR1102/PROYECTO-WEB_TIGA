@@ -132,7 +132,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
-    <Compile Include="Controllers\WebRyCController.cs" />
+    <Compile Include="Controllers\WebResultadoAuditoriaController.cs" />
     <Compile Include="Controllers\WebTecController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -239,7 +239,7 @@
     <Compile Include="Models\VIEW_USUARIOS_FORGOT_PASSWORD.cs">
       <DependentUpon>DBModel2.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VIEW_WT_ADMIN_MODULO_ROL.cs">
+    <Compile Include="Models\VIEW_USUARIOS_LOGIN.cs">
       <DependentUpon>DBModel2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VIEW_WT_USUARIOS.cs">
@@ -2097,7 +2097,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Usuarios\" />
-    <Folder Include="Views\WebRyC\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2135,6 +2134,12 @@
     <Content Include="Views\AdministradorUsuarios\Edit.cshtml" />
     <Content Include="Views\AdministradorUsuarios\Administrador_U.cshtml" />
     <Content Include="Views\AdministradorUsuarios\Administrador_Modulos.cshtml" />
+    <Content Include="Views\Shared\_Layout_Resultados_Auditoria.cshtml" />
+    <Content Include="Views\WebResultadoAuditoria\Dashboard_WRA.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Views\WebResultadoAuditoria\Detalle_Resultados_Auditoria.cshtml" />
+    <Content Include="Views\WebResultadoAuditoria\Detalle_Seguimiento_Observaciones.cshtml" />
+    <Content Include="Views\WebResultadoAuditoria\Detalle_Controles_Evaluados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

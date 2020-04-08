@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'D:\PACIFICO-CUARENTENA\PROYECTO WEB\WEB.TIGA - V4\TeamTEC\TeamTEC\Models\DBModel2.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'D:\PACIFICO-CUARENTENA\PROYECTO WEB\WEB-TIGA\cesar02_11-hotmail.com\TeamTEC\TeamTEC\Models\DBModel2.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

@@ -25,7 +25,7 @@ namespace WebTIGA.Models
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
 
-        PROYECTOSIAV2Entities user = new PROYECTOSIAV2Entities();
+        PROYECTOSIAV2Entities1 user = new PROYECTOSIAV2Entities1();
         public bool logeo()
 
         {

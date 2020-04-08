@@ -24,8 +24,8 @@ namespace WebTIGA.Models
         public int IdRol { get; set; }
         public int Estado { get; set; }
     
-        public virtual Rol Rol { get; set; }
         public virtual Modulo Modulo { get; set; }
+        public virtual Rol Rol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsuarioModuloRol> UsuarioModuloRol { get; set; }
     }

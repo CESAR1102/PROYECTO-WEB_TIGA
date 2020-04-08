@@ -6,18 +6,20 @@
     <edmx:Diagrams>
       <Diagram DiagramId="0535a6e422024a188c4db15e7677b5ae" Name="Diagram1">
         <EntityTypeShape EntityType="PROYECTOSIAV2Model.ModuloRol" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PROYECTOSIAV2Model.Persona" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="PROYECTOSIAV2Model.Rol" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PROYECTOSIAV2Model.Usuario" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PROYECTOSIAV2Model.UsuarioModuloRol" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="PROYECTOSIAV2Model.FK_ModuloRol_IdRol" ManuallyRouted="false" />
-        <AssociationConnector Association="PROYECTOSIAV2Model.FK_UsuarioModuloRol_ModuloRol" ManuallyRouted="false" />
-        <AssociationConnector Association="PROYECTOSIAV2Model.FK__Usuario__IdPerso__2704CA5F" ManuallyRouted="false" />
-        <AssociationConnector Association="PROYECTOSIAV2Model.FK_UsuarioModuloRol_IdUsuario" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PROYECTOSIAV2Model.VIEW_ADMINISTRACION_USUARIOS" Width="1.5" PointX="3.375" PointY="4.75" />
-        <EntityTypeShape EntityType="PROYECTOSIAV2Model.VIEW_USUARIOS_FORGOT_PASSWORD" Width="1.5" PointX="6.25" PointY="4.875" />
+        <EntityTypeShape EntityType="PROYECTOSIAV2Model.VIEW_USUARIOS_FORGOT_PASSWORD" Width="1.5" PointX="6.875" PointY="2.75" />
         <EntityTypeShape EntityType="PROYECTOSIAV2Model.Modulo" Width="1.5" PointX="0.75" PointY="1" />
         <AssociationConnector Association="PROYECTOSIAV2Model.FK_ModuloRol_IdModulo" />
+        <EntityTypeShape EntityType="PROYECTOSIAV2Model.Persona" Width="1.5" PointX="0.75" PointY="8.125" />
+        <AssociationConnector Association="PROYECTOSIAV2Model.FK__Usuario__IdPerso__2704CA5F" />
+        <EntityTypeShape EntityType="PROYECTOSIAV2Model.VIEW_WT_USUARIOS" Width="1.5" PointX="6.25" PointY="1.25" />
+        <EntityTypeShape EntityType="PROYECTOSIAV2Model.UsuarioModuloRol" Width="1.5" PointX="5.25" PointY="8.125" />
+        <AssociationConnector Association="PROYECTOSIAV2Model.FK_UsuarioModuloRol_ModuloRol" />
+        <AssociationConnector Association="PROYECTOSIAV2Model.FK_UsuarioModuloRol_IdUsuario" />
+        <EntityTypeShape EntityType="PROYECTOSIAV2Model.VIEW_WT_ADMIN_MODULO_ROL" Width="1.5" PointX="9.25" PointY="2.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

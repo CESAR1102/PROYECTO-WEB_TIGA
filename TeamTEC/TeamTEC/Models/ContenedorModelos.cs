@@ -26,7 +26,7 @@ namespace WebTIGA.Models
         public IEnumerable<WebTIGA.Models.SP_MODULOS_USUARIOS_Result> SP_MODULOS_USUARIOS_Result { get; set; }
         public IEnumerable<WebTIGA.Models.SP_WT_ADMINISTRADOR_USUARIOS_Result> SP_WT_ADMINISTRADOR_USUARIOS_Result { get; set; }
         public IEnumerable<WebTIGA.Models.VIEW_WT_USUARIOS> VIEW_WT_USUARIOS { get; set; }
-        public IEnumerable<WebTIGA.Models.VIEW_WT_ADMIN_MODULO_ROL> VIEW_WT_ADMIN_MODULO_ROL{ get; set; }
+
         public IEnumerable<WebTIGA.Models.SP_WT_ROLES_MODULO_Result> SP_WT_ROLES_MODULO_Result { get; set; }
 
     }
@@ -50,7 +50,7 @@ namespace WebTIGA.Models
         [Required]
         public string Usuario { get; set; }
 
-        PROYECTOSIAV2Entities user = new PROYECTOSIAV2Entities();
+        PROYECTOSIAV2Entities1 user = new PROYECTOSIAV2Entities1();
 
         public bool validar_usuario()
 
